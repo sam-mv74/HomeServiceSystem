@@ -20,11 +20,11 @@ public abstract class UserRepositoryImpl<T extends User> extends BaseRepositoryI
     public T findByUsername(String username) {
         try {
             TypedQuery<T> query = entityManager.createQuery(
-                    "SELECT u FROM "+getEntityClass().getSimpleName()+" u WHERE u.userName = :username", getEntityClass());
+                    "SELECT u FROM " + getEntityClass().getSimpleName() + " u WHERE u.userName = :username", getEntityClass());
             query.setParameter("username", username);
             return query.getSingleResult();
-        }catch (Exception e){
-            throw new EntityNotFoundException("User Not Found With This Username",e);
+        } catch (Exception e) {
+            throw new EntityNotFoundException("User Not Found With This Username", e);
         }
     }
 
@@ -32,12 +32,12 @@ public abstract class UserRepositoryImpl<T extends User> extends BaseRepositoryI
     public T findByUserNameAndPassword(String username, String password) {
         try {
             TypedQuery<T> query = entityManager.createQuery(
-                    "SELECT u FROM "+getEntityClass().getSimpleName()+" u WHERE u.userName = :username AND u.password = :password", getEntityClass());
+                    "SELECT u FROM " + getEntityClass().getSimpleName() + " u WHERE u.userName = :username AND u.password = :password", getEntityClass());
             query.setParameter("username", username);
             query.setParameter("password", password);
             return query.getSingleResult();
-        }catch (Exception e){
-            throw new EntityNotFoundException("User Not Found With This Id",e);
+        } catch (Exception e) {
+            throw new EntityNotFoundException("User Not Found With This Id", e);
         }
     }
 }

@@ -24,10 +24,10 @@ public class TechnicianRepositoryImpl extends UserRepositoryImpl<Technician> imp
         try {
             String jpql = "from Technician t where t.technicianStatus = :technicianStatus";
             TypedQuery<Technician> query = entityManager.createQuery(jpql, Technician.class);
-            query.setParameter("technicianStatus",technicianStatus);
+            query.setParameter("technicianStatus", technicianStatus);
             return query.getResultList();
         } catch (Exception e) {
-            throw new EntityNotFoundException("Error While Retrieving Technicians",e);
+            throw new EntityNotFoundException("Error While Retrieving Technicians", e);
         }
     }
 }

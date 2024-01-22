@@ -6,7 +6,6 @@ import com.maktab.final_project.repository.OfferRepository;
 import com.maktab.final_project.service.OfferService;
 
 public class OfferServiceImpl extends BaseServiceImpl<Offer, Long, OfferRepository> implements OfferService {
-
     public OfferServiceImpl(OfferRepository repository) {
         super(repository);
     }

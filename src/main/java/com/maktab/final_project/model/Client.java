@@ -12,9 +12,9 @@ import java.util.List;
 @Entity
 public class Client extends User{
     private Double credit;
+
     @OneToMany(mappedBy = "client")
     private List<Order> orderList;
-
     public Client() {
         super();
         credit= 0.0;

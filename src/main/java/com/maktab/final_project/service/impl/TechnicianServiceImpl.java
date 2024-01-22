@@ -20,6 +20,7 @@ public class TechnicianServiceImpl extends UserServiceImpl<Technician, Technicia
     public TechnicianServiceImpl(TechnicianRepository repository) {
         super(repository);
     }
+
     @Override
     public void registerTechnician(TechnicianRegistrationDTO technicianRegistrationDTO) {
         try {
@@ -33,9 +34,10 @@ public class TechnicianServiceImpl extends UserServiceImpl<Technician, Technicia
                 technician.setEmail(technicianRegistrationDTO.getEmail());
                 technician.setPersonalPhoto(convertToByte(technicianRegistrationDTO.getPhotoFilePath()));
                 technician.setSelectedSubServiceList(technicianRegistrationDTO.getSubServices());
-                repository.saveOrUpdate(technician);}
-        }catch (InvalidRegistrationDetailsException e){
-            throw new ServiceException("Error While Registering Technician ",e);
+                repository.saveOrUpdate(technician);
+            }
+        } catch (InvalidRegistrationDetailsException e) {
+            throw new ServiceException("Error While Registering Technician ", e);
         }
 
     }
@@ -54,7 +56,7 @@ public class TechnicianServiceImpl extends UserServiceImpl<Technician, Technicia
             outputStream.write(personalPhoto);
             outputStream.close();
         } catch (IOException e) {
-            throw new ServiceException("Error While Downloading Image",e);
+            throw new ServiceException("Error While Downloading Image", e);
         }
     }
 

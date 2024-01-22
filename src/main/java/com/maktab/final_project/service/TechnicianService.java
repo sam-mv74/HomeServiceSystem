@@ -11,5 +11,6 @@ public interface TechnicianService extends UserService<Technician> {
     void registerTechnician(TechnicianRegistrationDTO technicianRegistrationDTO);
 
     List<Technician> findByStatus(TechnicianStatus status);
+
     void downloadImage(Long id);
 }

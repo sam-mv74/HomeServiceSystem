@@ -10,7 +10,7 @@ public class GlobalValidation {
         return result;
     }
 
-    public static String passwordValidation(String input){
+    public static String passwordValidation(String input) {
         String result = "";
         if (!input.matches("^(?=.*[a-zA-Z])(?=.*\\d)[a-zA-Z\\d]{8}$")) {
             result = "Password Must Have Length Of 8 And Combine Of Numbers And Letters";

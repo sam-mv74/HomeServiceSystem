@@ -22,7 +22,6 @@ import java.util.List;
 
 public class ClientServiceImpl extends UserServiceImpl<Client, ClientRepository> implements ClientService {
 
-
     public ClientServiceImpl(ClientRepository repository) {
         super(repository);
     }
@@ -50,14 +49,14 @@ public class ClientServiceImpl extends UserServiceImpl<Client, ClientRepository>
         try {
             if (order.getSuggestedPrice() <= order.getSubService().getBasePrice()) {
                 throw new ServiceException("Suggested Price Cant Be Less Than Base Price");
-            }else if (order.getDoingDate().isBefore(LocalDateTime.now())){
+            } else if (order.getDoingDate().isBefore(LocalDateTime.now())) {
                 throw new ServiceException("Doing Date Cant Be Before Current Date");
             }
             order.setClient((Client) SecurityContext.getCurrentUser());
             order.setOrderStatus(OrderStatus.WAITE_FOR_OFFER);
             ApplicationContext.getOrderService().saveOrUpdate(order);
         } catch (EntityOperationException e) {
-            throw new ServiceException("Error While Adding Order",e);
+            throw new ServiceException("Error While Adding Order", e);
         }
     }
 
@@ -76,7 +75,7 @@ public class ClientServiceImpl extends UserServiceImpl<Client, ClientRepository>
             Service service = ApplicationContext.getServiceService().findById(serviceId);
             return service.getSubServiceList();
         } catch (EntityNotFoundException e) {
-            throw new ServiceException("Error While Retrieving SubServices ",e);
+            throw new ServiceException("Error While Retrieving SubServices ", e);
         }
     }
 }

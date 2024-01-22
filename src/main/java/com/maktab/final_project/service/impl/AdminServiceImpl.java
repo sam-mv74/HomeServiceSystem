@@ -14,7 +14,6 @@ import com.maktab.final_project.util.ApplicationContext;
 import java.util.List;
 
 public class AdminServiceImpl extends UserServiceImpl<Admin, AdminRepository> implements AdminService {
-
     public AdminServiceImpl(AdminRepository repository) {
         super(repository);
 
@@ -79,7 +78,7 @@ public class AdminServiceImpl extends UserServiceImpl<Admin, AdminRepository> im
     public List<Technician> showNewTechnicians() {
         try {
             return ApplicationContext.getTechnicianService().findByStatus(TechnicianStatus.NEW);
-        }catch (EntityNotFoundException e){
+        } catch (EntityNotFoundException e) {
             throw new ServiceException("Error While Showing New Technicians");
         }
     }
@@ -160,11 +159,11 @@ public class AdminServiceImpl extends UserServiceImpl<Admin, AdminRepository> im
 
     @Override
     public List<SubService> showTechniciansSelectedSubServices(long technicianId) {
-       try {
-           Technician technician = ApplicationContext.getTechnicianService().findById(technicianId);
-           return technician.getApprovedSubServiceList();
-       }catch (EntityNotFoundException e){
-           throw new ServiceException("Error While Showing Technicians Selected SubServices",e);
-       }
+        try {
+            Technician technician = ApplicationContext.getTechnicianService().findById(technicianId);
+            return technician.getApprovedSubServiceList();
+        } catch (EntityNotFoundException e) {
+            throw new ServiceException("Error While Showing Technicians Selected SubServices", e);
+        }
     }
 }

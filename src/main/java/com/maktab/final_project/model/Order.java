@@ -24,6 +24,7 @@ public class Order extends BaseEntity<Long> {
     private String address;
     @Enumerated(value = EnumType.STRING)
     private OrderStatus orderStatus;
+
     @OneToMany(mappedBy = "order")
     private List<Offer> offerList;
     @ManyToOne(cascade = CascadeType.ALL)
@@ -38,7 +39,6 @@ public class Order extends BaseEntity<Long> {
         this.address = address;
         this.subService = subService;
     }
-
 
     @Override
     public String toString() {

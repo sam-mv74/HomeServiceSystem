@@ -18,6 +18,7 @@ public class ServiceRepositoryImpl extends BaseRepositoryImpl<Service, Long> imp
     public Class<Service> getEntityClass() {
         return Service.class;
     }
+
     @Override
     public Service findByTitle(String title) {
         try {
@@ -25,8 +26,8 @@ public class ServiceRepositoryImpl extends BaseRepositoryImpl<Service, Long> imp
                     "SELECT s FROM Service s WHERE s.title = :title", getEntityClass());
             query.setParameter("title", title);
             return query.getSingleResult();
-        }catch (Exception e){
-            throw new EntityNotFoundException("Service Not Found With This Title",e);
+        } catch (Exception e) {
+            throw new EntityNotFoundException("Service Not Found With This Title", e);
         }
     }
 }

@@ -23,6 +23,7 @@ public class TechnicianRegistrationDetailsValidation extends GlobalValidation {
             throw new InvalidRegistrationDetailsException(results);
         return true;
     }
+
     public static String emailValidation(String input) {
         String result = "";
         if (!input.matches("^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$")) {
@@ -31,7 +32,7 @@ public class TechnicianRegistrationDetailsValidation extends GlobalValidation {
             List<Technician> users = ApplicationContext.getTechnicianService().findAll();
             boolean existEmail = users.stream()
                     .anyMatch(user -> user.getEmail() != null && user.getEmail().equals(input));
-            if(existEmail)
+            if (existEmail)
                 result = "Technician With This Email Already Exists";
         }
         return result;

@@ -10,12 +10,11 @@ import com.maktab.final_project.repository.UserRepository;
 import com.maktab.final_project.service.UserService;
 import com.maktab.final_project.validation.ClientRegistrationDetailsValidation;
 
-public class UserServiceImpl<T extends User,R extends UserRepository<T>> extends BaseServiceImpl<T, Long, R> implements UserService<T> {
+public class UserServiceImpl<T extends User, R extends UserRepository<T>> extends BaseServiceImpl<T, Long, R> implements UserService<T> {
 
     public UserServiceImpl(R repository) {
         super(repository);
     }
-
 
 
     @Override
@@ -23,7 +22,7 @@ public class UserServiceImpl<T extends User,R extends UserRepository<T>> extends
         try {
             return repository.findByUsername(username);
         } catch (EntityNotFoundException e) {
-            throw new ServiceException("Error While Finding User By Username",e);
+            throw new ServiceException("Error While Finding User By Username", e);
         }
     }
 
@@ -31,17 +30,17 @@ public class UserServiceImpl<T extends User,R extends UserRepository<T>> extends
     public void changePassword(String userName, String password, String newPassword) {
         try {
             User user = findByUserNameAndPassword(userName, password);
-            if (user !=null){
+            if (user != null) {
                 String result = ClientRegistrationDetailsValidation.passwordValidation(newPassword);
-                if(result.isBlank()) {
+                if (result.isBlank()) {
                     user.setPassword(newPassword);
                     saveOrUpdate((T) user);
-                }else {
+                } else {
                     throw new InvalidRegistrationDetailsException(result);
                 }
             }
         } catch (EntityNotFoundException | InvalidRegistrationDetailsException e) {
-            throw new ServiceException("Error While Changing Password",e);
+            throw new ServiceException("Error While Changing Password", e);
         }
     }
 
@@ -49,8 +48,8 @@ public class UserServiceImpl<T extends User,R extends UserRepository<T>> extends
     public T findByUserNameAndPassword(String userName, String password) {
         try {
             return repository.findByUserNameAndPassword(userName, password);
-        }catch (EntityNotFoundException e){
-            throw new ServiceException("Error While Finding User By Username And Password ",e);
+        } catch (EntityNotFoundException e) {
+            throw new ServiceException("Error While Finding User By Username And Password ", e);
         }
     }
 }

@@ -11,8 +11,6 @@ import javax.persistence.Persistence;
 
 public class ApplicationContext {
 
-
-
     private static final EntityManager entityManager =
             Persistence.createEntityManagerFactory(
                     "default"

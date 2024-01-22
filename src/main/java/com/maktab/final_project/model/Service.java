@@ -15,8 +15,8 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 public class Service extends BaseEntity<Long> {
-
     private String title;
+
     @OneToMany(mappedBy = "service")
     private List<SubService> subServiceList;
 

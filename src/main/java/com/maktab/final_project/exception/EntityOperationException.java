@@ -1,6 +1,6 @@
 package com.maktab.final_project.exception;
 
-public class EntityOperationException extends RuntimeException{
+public class EntityOperationException extends RuntimeException {
     public EntityOperationException() {
     }
 

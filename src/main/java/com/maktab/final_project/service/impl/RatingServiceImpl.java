@@ -6,7 +6,6 @@ import com.maktab.final_project.repository.RatingRepository;
 import com.maktab.final_project.service.RatingService;
 
 public class RatingServiceImpl extends BaseServiceImpl<Rating, Long, RatingRepository> implements RatingService {
-
     public RatingServiceImpl(RatingRepository repository) {
         super(repository);
     }

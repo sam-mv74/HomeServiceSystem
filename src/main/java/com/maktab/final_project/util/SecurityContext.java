@@ -16,7 +16,7 @@ public class SecurityContext {
     public static LocalDate currentDate;
 
     public static void fillUserContext(User user) {
-        currentUser =user;
+        currentUser = user;
     }
 
     public static void fillDateContext(LocalDate date) {

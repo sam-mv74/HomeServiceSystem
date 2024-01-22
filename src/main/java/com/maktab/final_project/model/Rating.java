@@ -19,6 +19,7 @@ import javax.persistence.OneToOne;
 public class Rating extends BaseEntity<Long> {
     private String comment;
     private Integer score;
+
     @OneToOne(cascade = CascadeType.ALL)
     private Offer offer;
 
